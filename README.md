@@ -1,35 +1,26 @@
-# ARBAT Vision Starter — Build 0.1
+# ARBAT Personal AI Agent — Build 1.0
 
-এটি ARBAT Personal AI Agent-এর প্রথম browser-based hand-tracking prototype।
+## Included working browser modules
+- Overview dashboard and local command router (not a generative AI model)
+- Image Studio: upload, brightness, contrast, saturation, grayscale, PNG download
+- Video Studio: local preview and experimental real-time WebM trim/export using MediaRecorder
+- Code Lab: HTML editor and sandboxed live preview
+- Voice: browser speech recognition where supported and speech synthesis
+- Vision: MediaPipe hand landmarks and basic gesture detection
+- Notes: browser localStorage
 
-## কী আছে
-- PC ও Android browser-এ responsive interface
-- Camera permission নিয়ে live camera feed
-- MediaPipe Hands দিয়ে সর্বোচ্চ ২টি হাত শনাক্ত করার চেষ্টা
-- Hand landmark overlay
-- পরীক্ষামূলক Open Palm, Fist, Peace ও One Finger gesture classification
-- Stop button দিয়ে camera বন্ধ
+## GitHub Pages
+1. Extract ZIP.
+2. Upload `index.html`, `style.css`, `app.js`, `README.md` to repository root (not a nested folder).
+3. Commit to `main`.
+4. Settings → Pages → Deploy from a branch → `main` → `/(root)`.
+5. Open `https://USERNAME.github.io/REPOSITORY/`.
 
-## GitHub Pages-এ চালানোর নিয়ম
-1. GitHub-এ নতুন repository তৈরি করো, যেমন `arbat-vision`.
-2. এই ZIP-এর ভেতরের `index.html`, `style.css`, `script.js` ও `README.md` ফাইলগুলো repository-র মূল জায়গায় upload করো।
-3. Commit changes করো।
-4. Repository → Settings → Pages-এ যাও।
-5. Build and deployment অংশে `Deploy from a branch` বেছে নাও।
-6. Branch হিসেবে `main` এবং folder হিসেবে `/ (root)` বেছে Save করো।
-7. GitHub Pages-এর তৈরি করা HTTPS link খুলো।
-8. Chrome-এ Camera permission Allow করে `ক্যামেরা চালু করো` চাপো।
-
-## প্রয়োজনীয় বিষয়
-- MediaPipe library CDN থেকে লোড হয়, তাই Internet connection দরকার।
-- Camera access সাধারণত HTTPS website বা localhost-এ কাজ করে। GitHub Pages HTTPS দেয়।
-- প্রথমবার চালু হতে কয়েক সেকেন্ড লাগতে পারে।
-- Gesture classification একটি simple prototype; আলো, ক্যামেরার কোণ ও হাতের অবস্থান অনুযায়ী ভুল হতে পারে।
-- এটি এখনো সম্পূর্ণ ARBAT AI নয়। এতে chat AI, voice assistant, persistent memory, PC/mobile automation বা video editor নেই।
-- এই prototype ভিডিও কোথাও upload বা save করে না; processing browser-এ হয়।
-- Camera permission ছাড়া camera চালু হবে না। ব্যবহার শেষে Stop চাপো।
-
-## ফাইল
-- `index.html` — page structure
-- `style.css` — design and responsive layout
-- `script.js` — camera, hand tracking and gesture detection
+## Limitations (important)
+This is a functional starter, not a complete AGI or human-level assistant.
+- Real generative AI chat, web research, AI image generation, and advanced AI video generation require an AI service and a secure backend. Never publish private API keys in GitHub Pages code.
+- Browser pages cannot freely control all PC apps or Android system settings. Those require separate desktop/mobile apps and explicit permissions.
+- Video export depends on `captureStream` and `MediaRecorder` support. It runs in real time; try desktop Chrome first. Output is WebM.
+- Vision needs internet for MediaPipe CDN and camera permission. GitHub Pages uses HTTPS.
+- Voice recognition support varies by browser and language.
+- Notes are saved only in the current browser; they do not sync between devices.
