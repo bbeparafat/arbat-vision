@@ -1,14 +1,229 @@
-<!doctype html><html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ARBAT Personal AI Agent</title><link rel="stylesheet" href="style.css"></head><body>
-<aside id="sidebar"><div class="brand">A <span>ARBAT<small>PERSONAL AI AGENT</small></span></div><nav>
-<button data-page="home">⌂ Overview</button><button data-page="chat">✦ AI Assistant</button><button data-page="video">▶ Video Studio</button><button data-page="image">▧ Image Studio</button><button data-page="code">⌘ Code Lab</button><button data-page="voice">◖ Voice Control</button><button data-page="vision">◎ Vision AI</button><button data-page="memory">▤ Memory & Notes</button></nav><small class="online">● SYSTEM ONLINE · BUILD 1.0</small></aside>
-<main><header><button id="menu">☰</button> ARBAT / <b id="heading">Overview</b><span>LOCAL MODE</span></header>
-<section id="home" class="page active"><div class="hero"><div><small>PERSONAL AI WORKSPACE</small><h1>তোমার কাজ।<br><em>তোমার ARBAT.</em></h1><p>Creative tools, coding, voice, vision এবং personal workspace—এক জায়গায়।</p></div><div class="orb">A</div></div><div class="notice"><b>সত্যিকারের কাজ দিয়ে শুরু</b><br>এই build-এ browser-এ চলা tools কাজ করবে। Generative AI brain, advanced AI video generation এবং system-level PC/mobile control-এর জন্য পরের ধাপে নিরাপদ backend ও আলাদা app লাগবে।</div><h2>WORKSPACE TOOLS</h2><div class="tiles"><button data-open="video">▶<b>Video Studio</b><small>Preview, trim & WebM export test</small></button><button data-open="image">▧<b>Image Studio</b><small>Filters, adjustments, PNG download</small></button><button data-open="code">⌘<b>Code Lab</b><small>HTML editor & live preview</small></button><button data-open="voice">◖<b>Voice Control</b><small>Speech recognition & speak</small></button><button data-open="vision">◎<b>Vision AI</b><small>Hand tracking prototype</small></button><button data-open="memory">▤<b>Memory & Notes</b><small>Browser-saved notes</small></button></div></section>
-<section id="chat" class="page"><small>ARBAT CORE</small><h1>AI Assistant</h1><p>এটি আপাতত local command assistant; পূর্ণ generative AI নয়।</p><div class="panel"><div id="messages" class="messages"><p class="bot">আমি ARBAT। কোন tool খুলতে চাও? যেমন: video, image, code, voice, vision, notes.</p></div><form id="chatform"><input id="chatinput" placeholder="কমান্ড লিখো..."><button>Send</button></form></div></section>
-<section id="video" class="page"><small>CREATIVE WORKSPACE / 01</small><h1>Video Studio</h1><p>ভিডিও upload করে preview, start/end time দিয়ে WebM trim export চেষ্টা করো।</p><div class="panel"><label class="file">ভিডিও বাছাই<input id="videofile" type="file" accept="video/*"></label><video id="video" controls playsinline></video><div class="fields"><label>Start sec<input id="start" type="number" min="0" step=".1" value="0"></label><label>End sec<input id="end" type="number" min="0" step=".1" value="0"></label></div><button id="export">Trim & Export WebM</button><p id="videomsg" class="hint">Export browser support-এর ওপর নির্ভরশীল; real-time capture, PC Chrome-এ ভালো কাজ করতে পারে।</p></div></section>
-<section id="image" class="page"><small>CREATIVE WORKSPACE / 02</small><h1>Image Studio</h1><div class="panel"><label class="file">ছবি বাছাই<input id="imagefile" type="file" accept="image/*"></label><div class="canvaswrap"><canvas id="canvas"></canvas><span id="empty">ছবি upload করো</span></div><div class="sliders"><label>Brightness<input id="bright" type="range" min="0" max="200" value="100"></label><label>Contrast<input id="contrast" type="range" min="0" max="200" value="100"></label><label>Saturation<input id="sat" type="range" min="0" max="200" value="100"></label><label>Grayscale<input id="gray" type="range" min="0" max="100" value="0"></label></div><button id="reset">Reset</button><button id="download">Download PNG</button><p id="imagemsg" class="hint">ছবি browser-এর ভেতরেই প্রসেস হয়।</p></div></section>
-<section id="code" class="page"><small>DEVELOPER WORKSPACE</small><h1>Code Lab</h1><div class="panel"><button id="run">Run Preview</button><textarea id="editor" spellcheck="false"><!doctype html><html><body style="background:#0b1726;color:white;font-family:Arial;padding:25px"><h1>Hello from ARBAT!</h1><p>নিজের HTML/CSS/JS লিখে Run Preview চাপো।</p></body></html></textarea><iframe id="preview" sandbox="allow-scripts"></iframe></div></section>
-<section id="voice" class="page"><small>HUMAN INTERFACE</small><h1>Voice Control</h1><div class="panel center"><div class="orb">◖</div><h2 id="voicestate">Voice standby</h2><p id="voicetext">Start Listening চাপো এবং কথা বলো।</p><button id="listen">🎙 Start Listening</button><button id="speak">Test Voice</button><p class="hint">Microphone permission এবং supported browser লাগবে।</p></div></section>
-<section id="vision" class="page"><small>COMPUTER VISION</small><h1>Vision AI</h1><div class="columns"><div class="panel"><video id="cam" playsinline muted></video><canvas id="camcanvas"></canvas><button id="camstart">Start Camera</button><button id="camstop" disabled>Stop</button></div><div class="panel"><p>Hands: <b id="hands">0</b></p><p>Gesture: <b id="gesture">Waiting</b></p><p class="hint">MediaPipe CDN ও camera permission দরকার।</p></div></div></section>
-<section id="memory" class="page"><small>PERSONAL WORKSPACE</small><h1>Memory & Notes</h1><div class="panel"><textarea id="note" placeholder="Idea, task বা project note লেখো..."></textarea><button id="save">Save Note</button><div id="notes"></div><p class="hint">Notes এই browser-এর local storage-এ থাকে; device-গুলোর মধ্যে sync হয় না।</p></div></section>
-<footer>ARBAT PERSONAL AI · BUILD 1.0 <span>Browser edition · Local-first tools</span></footer></main>
-<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script><script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script><script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f6f8">
+  <meta name="description" content="ARBAT — a personal AI workspace prototype">
+  <title>ARBAT — Personal AI Workspace</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+      <div class="brand-row">
+        <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="brand-name">ARBAT<span>PERSONAL AI</span></div>
+        <button class="icon-button sidebar-close" id="sidebarClose" aria-label="Close navigation">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+
+      <div class="workspace-switcher">
+        <div class="workspace-avatar">A</div>
+        <div><strong>Arafat’s workspace</strong><small>Personal workspace</small></div>
+        <svg class="switch-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
+      </div>
+
+      <p class="nav-caption">WORKSPACE</p>
+      <nav class="primary-nav" id="primaryNav">
+        <button class="nav-item is-active" data-page="overview" aria-current="page">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>
+          <span>Overview</span><kbd>1</kbd>
+        </button>
+        <button class="nav-item" data-page="assistant">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H7l-3.5 2v-5A7.5 7.5 0 1 1 20 11.5Z"/><path d="M8 11.5h.01M12 11.5h.01M16 11.5h.01"/></svg>
+          <span>AI Assistant</span><kbd>2</kbd>
+        </button>
+        <button class="nav-item" data-page="memory">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.5h12A2.5 2.5 0 0 1 20.5 7v12.5H8A3.5 3.5 0 0 1 4.5 16V6A1.5 1.5 0 0 1 6 4.5Z"/><path d="M8 19.5a2 2 0 0 1 0-4h12.5M8.5 8.5h8M8.5 11.5h6"/></svg>
+          <span>Memory</span><kbd>3</kbd>
+        </button>
+        <button class="nav-item" data-page="tools">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 6.5 17.5 3 21 6.5l-3.5 3.5M13 8l3 3-8.5 8.5a2.12 2.12 0 0 1-3-3L13 8Z"/><path d="m4 4 5 5"/></svg>
+          <span>Skills &amp; tools</span><kbd>4</kbd>
+        </button>
+        <button class="nav-item" data-page="projects">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5h6l2 2h8A1.5 1.5 0 0 1 21.5 11v7A2.5 2.5 0 0 1 19 20.5H5A2.5 2.5 0 0 1 2.5 18V9A1.5 1.5 0 0 1 4 7.5Z"/><path d="M2.5 11h19"/></svg>
+          <span>Projects</span><kbd>5</kbd>
+        </button>
+        <button class="nav-item" data-page="activity">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l2.2-6 4.2 12 2.2-6H21"/></svg>
+          <span>Activity</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="core-mini">
+          <div class="core-mini-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v3M12 17.5v3M3.5 12h3m11 0h3M6 6l2.1 2.1m7.8 7.8L18 18m0-12-2.1 2.1m-7.8 7.8L6 18"/><circle cx="12" cy="12" r="4.5"/></svg></div>
+          <div><small>ARBAT CORE</small><strong><i></i> Prototype mode</strong></div>
+          <span class="pulse-dot" aria-hidden="true"></span>
+        </div>
+        <button class="profile-button" data-page="settings">
+          <span class="profile-avatar">AR</span>
+          <span class="profile-text"><strong>Arafat</strong><small>Personal account</small></span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>
+        </button>
+      </div>
+    </aside>
+
+    <button class="sidebar-backdrop" id="sidebarBackdrop" aria-label="Close navigation"></button>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-button menu-button" id="menuButton" aria-label="Open navigation">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+          <div class="breadcrumb"><span>ARBAT</span><span class="crumb-divider">/</span><strong id="pageCrumb">Overview</strong></div>
+        </div>
+        <div class="topbar-actions">
+          <button class="search-button" id="searchButton" aria-label="Search pages">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>
+            <span>Search anything</span><kbd>⌘ K</kbd>
+          </button>
+          <span class="topbar-divider"></span>
+          <button class="icon-button notification-button" id="noticeButton" aria-label="System status">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4"/></svg><i></i>
+          </button>
+          <button class="top-avatar" data-page="settings" aria-label="Open settings">A</button>
+        </div>
+      </header>
+
+      <div class="page-wrap">
+        <section class="page is-active" id="page-overview" data-page-content="overview">
+          <div class="page-heading heading-row">
+            <div><p class="eyebrow">YOUR PERSONAL AI WORKSPACE</p><h1>শুভ দুপুর, Arafat<span class="wave">✦</span></h1><p class="page-subtitle">ARBAT-এর পরের ধাপগুলো এখান থেকেই গুছিয়ে নাও।</p></div>
+            <button class="button button-primary" data-open-page="assistant"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg> নতুন conversation</button>
+          </div>
+
+          <section class="hero-card" aria-labelledby="heroTitle">
+            <div class="hero-copy">
+              <span class="hero-label"><span class="status-dot"></span> PROJECT ARBAT <span class="label-divider">/</span> IN DEVELOPMENT</span>
+              <h2 id="heroTitle">একটা AI. তোমার<br><em>পুরো ecosystem.</em></h2>
+              <p>তোমার পরিকল্পনা থেকে তৈরি হচ্ছে এক ব্যক্তিগত AI workspace—ধাপে ধাপে, নিরাপত্তাকে সঙ্গে নিয়ে।</p>
+              <button class="hero-link" data-open-page="projects">প্রজেক্ট roadmap দেখো <span aria-hidden="true">→</span></button>
+            </div>
+            <div class="brain-panel" aria-label="ARBAT brain architecture status">
+              <div class="brain-panel-top"><span>CORE ARCHITECTURE</span><span class="brain-spark">✳</span></div>
+              <div class="brain-orbit" aria-hidden="true"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="orbit orbit-c"></div><div class="orbit-core">A</div><span class="node node-one"></span><span class="node node-two"></span><span class="node node-three"></span></div>
+              <div class="brain-panel-bottom"><div><strong>Intelligence core</strong><small>Architecture in progress</small></div><span class="tag tag-violet">FOUNDATION</span></div>
+            </div>
+          </section>
+
+          <div class="section-heading"><div><p class="eyebrow">AT A GLANCE</p><h2>Your workspace</h2></div><span class="subtle-note">A clear view of what’s ready and what’s next</span></div>
+          <div class="overview-grid">
+            <article class="metric-card metric-main"><div class="metric-top"><span class="metric-icon icon-lavender"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v3M12 17.5v3M3.5 12h3m11 0h3M6 6l2.1 2.1m7.8 7.8L18 18m0-12-2.1 2.1m-7.8 7.8L6 18"/><circle cx="12" cy="12" r="4.5"/></svg></span><span class="tag tag-neutral">IN PROGRESS</span></div><div class="metric-value">01</div><h3>AI core</h3><p>Independent architecture starts with a clear foundation.</p><button class="text-link" data-open-page="projects">View roadmap <span>→</span></button></article>
+            <article class="metric-card"><div class="metric-top"><span class="metric-icon icon-blue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4.5h12A2.5 2.5 0 0 1 20.5 7v12.5H8A3.5 3.5 0 0 1 4.5 16V6A1.5 1.5 0 0 1 6 4.5Z"/><path d="M8 19.5a2 2 0 0 1 0-4h12.5M8.5 8.5h8M8.5 11.5h6"/></svg></span><span class="tag tag-green">LOCAL</span></div><div class="metric-value" id="memoryCount">00</div><h3>Saved memories</h3><p>Your notes stay in this browser on this device.</p><button class="text-link" data-open-page="memory">Open memory <span>→</span></button></article>
+            <article class="metric-card"><div class="metric-top"><span class="metric-icon icon-peach"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 6.5 17.5 3 21 6.5l-3.5 3.5M13 8l3 3-8.5 8.5a2.12 2.12 0 0 1-3-3L13 8Z"/><path d="m4 4 5 5"/></svg></span><span class="tag tag-neutral">PLANNED</span></div><div class="metric-value">06</div><h3>Specialist modules</h3><p>Focused skills, connected through one central brain.</p><button class="text-link" data-open-page="tools">Explore modules <span>→</span></button></article>
+          </div>
+
+          <div class="lower-grid">
+            <section class="surface-card modules-card">
+              <div class="section-card-heading"><div><p class="eyebrow">YOUR TOOLKIT</p><h2>Specialist modules</h2></div><button class="quiet-link" data-open-page="tools">All modules <span>→</span></button></div>
+              <div class="module-list">
+                <button class="module-row" data-open-page="tools"><span class="module-icon icon-blue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 5l-4 14"/></svg></span><span class="module-text"><strong>Programming</strong><small>Code, debug &amp; build software</small></span><span class="module-state">Planned</span><span class="row-arrow">↗</span></button>
+                <button class="module-row" data-open-page="tools"><span class="module-icon icon-violet"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="8.5" cy="9" r="1.5"/><path d="m5 17 5-5 3 3 2-2 4 4"/></svg></span><span class="module-text"><strong>Creative studio</strong><small>Images, video &amp; visual design</small></span><span class="module-state">Planned</span><span class="row-arrow">↗</span></button>
+                <button class="module-row" data-open-page="tools"><span class="module-icon icon-green"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M8 7.5a4 4 0 0 1 8 0v5a4 4 0 0 1-8 0v-5ZM5 11.5v1a7 7 0 0 0 14 0v-1"/></svg></span><span class="module-text"><strong>Voice &amp; vision</strong><small>Talk naturally and understand context</small></span><span class="module-state">Planned</span><span class="row-arrow">↗</span></button>
+              </div>
+            </section>
+
+            <section class="surface-card next-card">
+              <div class="section-card-heading"><div><p class="eyebrow">BUILDING ARBAT</p><h2>Up next</h2></div><span class="tiny-count">01 / 04</span></div>
+              <div class="next-step"><span class="step-number">01</span><div><strong>Define the AI core</strong><p>Choose the first local model and set up the orchestration layer.</p></div></div>
+              <div class="progress-track"><span></span></div>
+              <div class="next-footer"><span>Architecture first</span><button class="icon-button small-arrow" data-open-page="projects" aria-label="Open project roadmap">→</button></div>
+            </section>
+          </div>
+          <footer class="page-footer"><span>ARBAT workspace</span><span>Prototype interface · No model connected</span></footer>
+        </section>
+
+        <section class="page" id="page-assistant" data-page-content="assistant" hidden>
+          <div class="page-heading"><p class="eyebrow">CENTRAL INTELLIGENCE</p><h1>AI Assistant</h1><p class="page-subtitle">এক জায়গা থেকে কথা বলো, পরিকল্পনা করো, ARBAT-এর tools-এ পৌঁছাও।</p></div>
+          <div class="chat-layout">
+            <section class="surface-card chat-card" aria-label="Assistant conversation">
+              <div class="chat-header"><div class="chat-identity"><span class="chat-avatar">A</span><div><strong>ARBAT</strong><small><i class="status-dot"></i> Prototype mode</small></div></div><button class="quiet-button" id="newChatButton">New chat <span>＋</span></button></div>
+              <div class="chat-body" id="chatMessages" aria-live="polite">
+                <div class="welcome-message"><span class="welcome-glyph">✳</span><p class="eyebrow">A PERSONAL AI, BUILT AROUND YOU</p><h2>শুরু করি, Arafat.</h2><p>তোমার ARBAT-এর vision নিয়ে কথা বলো, অথবা নিচের কোনো topic বেছে নাও।</p><div class="suggestion-list"><button class="suggestion-chip">ARBAT-এর AI core কীভাবে শুরু করব?</button><button class="suggestion-chip">আমার project roadmap সাজাও</button><button class="suggestion-chip">Memory system-এর architecture</button></div></div>
+              </div>
+              <form class="composer" id="chatForm"><label class="sr-only" for="chatInput">Message ARBAT</label><textarea id="chatInput" rows="1" placeholder="ARBAT-কে কিছু জিজ্ঞেস করো..." required></textarea><div class="composer-bottom"><span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg> AI core is not connected yet</span><button class="send-button" type="submit" aria-label="Send message"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 14-7-4 14-3-6-7-1Z"/><path d="m12 13 7-8"/></svg></button></div></form>
+            </section>
+            <aside class="chat-side">
+              <section class="surface-card side-info-card"><span class="side-info-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v3M12 17.5v3M3.5 12h3m11 0h3M6 6l2.1 2.1m7.8 7.8L18 18m0-12-2.1 2.1m-7.8 7.8L6 18"/><circle cx="12" cy="12" r="4.5"/></svg></span><p class="eyebrow">CURRENT STATUS</p><h3>Brain not connected</h3><p>This chat is a UI prototype. It won’t invent AI replies or send your data to a service.</p><button class="text-link" data-open-page="settings">See setup notes <span>→</span></button></section>
+              <section class="surface-card side-info-card privacy-card"><span class="privacy-mark">✓</span><p class="eyebrow">PRIVACY FIRST</p><h3>Your data stays yours</h3><p>Memory notes are stored locally in this browser. No API key or cloud connection is configured.</p></section>
+            </aside>
+          </div>
+          <footer class="page-footer"><span>ARBAT Assistant</span><span>Messages are demo-only until a model is connected</span></footer>
+        </section>
+
+        <section class="page" id="page-memory" data-page-content="memory" hidden>
+          <div class="page-heading"><p class="eyebrow">PERSONAL KNOWLEDGE</p><h1>Memory</h1><p class="page-subtitle">আইডিয়া, project note আর ARBAT-এর জন্য প্রাসঙ্গিক তথ্য—এক জায়গায় রাখো।</p></div>
+          <div class="memory-layout">
+            <section class="surface-card memory-compose"><span class="compose-icon">＋</span><p class="eyebrow">QUICK CAPTURE</p><h2>কিছু মনে রাখতে চাও?</h2><p class="muted-copy">নোটগুলো এই browser-এ থাকবে; অন্য device-এ sync হবে না।</p><form id="noteForm"><label class="sr-only" for="noteInput">New note</label><textarea id="noteInput" rows="5" placeholder="একটা idea, task বা project note লিখো..."></textarea><div class="compose-footer"><span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg> Saved only on this device</span><button class="button button-primary" type="submit">Save note <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div></form></section>
+            <section class="memory-list-area"><div class="memory-list-head"><div><p class="eyebrow">YOUR NOTES</p><h2>Saved memories <span class="count-pill" id="memoryListCount">0</span></h2></div><label class="memory-search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg><input id="memorySearch" type="search" placeholder="Filter notes" aria-label="Filter notes"></label></div><div class="memory-list" id="memoryList"></div><div class="empty-state" id="memoryEmpty"><span>✳</span><h3>No notes yet</h3><p>তোমার প্রথম idea বা project note এখানে save করো।</p></div></section>
+          </div>
+          <footer class="page-footer"><span>Private by default</span><span>Local browser storage · No cloud sync</span></footer>
+        </section>
+
+        <section class="page" id="page-tools" data-page-content="tools" hidden>
+          <div class="page-heading"><p class="eyebrow">SPECIALIST MODULES</p><h1>Skills &amp; tools</h1><p class="page-subtitle">একটি central brain, অনেকগুলো focused capability—ধাপে ধাপে তৈরি হবে।</p></div>
+          <div class="tool-grid">
+            <article class="surface-card tool-card"><span class="tool-icon icon-blue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 5l-4 14"/></svg></span><span class="tag tag-violet">PLANNED</span><h2>Programming</h2><p>Code writing, debugging, testing and software project support.</p><div class="tool-card-bottom"><span>Python · JavaScript · more</span><span class="tool-arrow">↗</span></div></article>
+            <article class="surface-card tool-card"><span class="tool-icon icon-peach"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="8.5" cy="9" r="1.5"/><path d="m5 17 5-5 3 3 2-2 4 4"/></svg></span><span class="tag tag-violet">PLANNED</span><h2>Creative studio</h2><p>Image generation, graphics, video editing and visual workflows.</p><div class="tool-card-bottom"><span>Image · video · design</span><span class="tool-arrow">↗</span></div></article>
+            <article class="surface-card tool-card"><span class="tool-icon icon-green"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M8 7.5a4 4 0 0 1 8 0v5a4 4 0 0 1-8 0v-5ZM5 11.5v1a7 7 0 0 0 14 0v-1"/></svg></span><span class="tag tag-violet">PLANNED</span><h2>Voice &amp; vision</h2><p>Natural voice interaction, live camera input and visual scene understanding.</p><div class="tool-card-bottom"><span>Speech · camera · gestures</span><span class="tool-arrow">↗</span></div></article>
+            <article class="surface-card tool-card"><span class="tool-icon icon-lavender"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.2 2.3 3.3 5.1 3.3 8.5s-1.1 6.2-3.3 8.5c-2.2-2.3-3.3-5.1-3.3-8.5s1.1-6.2 3.3-8.5Z"/></svg></span><span class="tag tag-violet">PLANNED</span><h2>Research &amp; knowledge</h2><p>Web research, source checks, documents and personal knowledge retrieval.</p><div class="tool-card-bottom"><span>Web · files · analysis</span><span class="tool-arrow">↗</span></div></article>
+            <article class="surface-card tool-card"><span class="tool-icon icon-sand"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="12" rx="2"/><path d="M8 21h8m-4-4v4M8 9h8M8 13h4"/></svg></span><span class="tag tag-violet">PLANNED</span><h2>PC &amp; Android control</h2><p>Permission-based automation for supported desktop and mobile tasks.</p><div class="tool-card-bottom"><span>Windows · Android</span><span class="tool-arrow">↗</span></div></article>
+            <article class="surface-card tool-card"><span class="tool-icon icon-blue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v13H4zM8 9h8M8 12h8M8 15h5"/><path d="M8 3v5M16 3v5"/></svg></span><span class="tag tag-green">LOCAL NOTES</span><h2>Personal memory</h2><p>Capture project context and useful notes in this local prototype.</p><div class="tool-card-bottom"><button class="text-link" data-open-page="memory">Open memory <span>→</span></button><span class="tool-arrow">↗</span></div></article>
+          </div>
+          <div class="info-banner"><span class="info-symbol">i</span><p><strong>Honest status:</strong> these modules are a roadmap, not active AI features. The current interface does not call a model or control devices.</p><button class="quiet-link" data-open-page="projects">See the build plan <span>→</span></button></div>
+          <footer class="page-footer"><span>Modular by design</span><span>Tools will connect through the ARBAT core</span></footer>
+        </section>
+
+        <section class="page" id="page-projects" data-page-content="projects" hidden>
+          <div class="page-heading"><p class="eyebrow">PROJECT ARBAT</p><h1>Build roadmap</h1><p class="page-subtitle">বড় vision-টাকে ছোট, testable milestone-এ ভাঙা—এটাই প্রথম কাজ।</p></div>
+          <section class="roadmap-banner"><div><span class="hero-label"><span class="status-dot"></span> CURRENT FOCUS</span><h2>Build the brain before the body.</h2><p>আগে orchestration, model runtime, memory আর permission system। তারপর specialist tools ও device apps।</p></div><span class="roadmap-big-number">01<span>/04</span></span></section>
+          <div class="roadmap-list">
+            <article class="roadmap-item current"><span class="roadmap-number">01</span><div class="roadmap-content"><div class="roadmap-title"><h3>AI core foundation</h3><span class="tag tag-violet">CURRENT FOCUS</span></div><p>Define the local model runtime, central orchestrator, tool registry, safety boundaries and evaluation loop.</p><div class="roadmap-tags"><span>Local model</span><span>Orchestrator</span><span>Tool permissions</span></div></div><span class="roadmap-check">01</span></article>
+            <article class="roadmap-item"><span class="roadmap-number">02</span><div class="roadmap-content"><div class="roadmap-title"><h3>Memory &amp; personal context</h3><span class="tag tag-neutral">NEXT</span></div><p>Add searchable long-term memory, short-term conversation context and user-controlled retention.</p><div class="roadmap-tags"><span>Memory store</span><span>Search</span><span>Privacy controls</span></div></div><span class="roadmap-check">02</span></article>
+            <article class="roadmap-item"><span class="roadmap-number">03</span><div class="roadmap-content"><div class="roadmap-title"><h3>Skills &amp; multimodal tools</h3><span class="tag tag-neutral">PLANNED</span></div><p>Connect coding, research, creative, voice and vision tools behind the same agent interface.</p><div class="roadmap-tags"><span>Specialist modules</span><span>Model routing</span><span>Testing</span></div></div><span class="roadmap-check">03</span></article>
+            <article class="roadmap-item"><span class="roadmap-number">04</span><div class="roadmap-content"><div class="roadmap-title"><h3>Devices &amp; ecosystem</h3><span class="tag tag-neutral">PLANNED</span></div><p>Build separate desktop and Android clients, secure sync and explicit confirmation for sensitive actions.</p><div class="roadmap-tags"><span>Windows app</span><span>Android app</span><span>Secure sync</span></div></div><span class="roadmap-check">04</span></article>
+          </div>
+          <div class="info-banner"><span class="info-symbol">i</span><p><strong>Training note:</strong> training a foundation model from scratch is a major compute and research project. Start with a local open-weight model, then make ARBAT’s orchestration, memory and tools your own.</p><button class="quiet-link" data-open-page="settings">Privacy notes <span>→</span></button></div>
+          <footer class="page-footer"><span>Project planning</span><span>Roadmap is editable as the project grows</span></footer>
+        </section>
+
+        <section class="page" id="page-activity" data-page-content="activity" hidden>
+          <div class="page-heading"><p class="eyebrow">WORKSPACE HISTORY</p><h1>Activity</h1><p class="page-subtitle">এই browser session-এ করা সাম্প্রতিক কাজের সংক্ষিপ্ত তালিকা।</p></div>
+          <section class="surface-card activity-card"><div class="section-card-heading"><div><p class="eyebrow">RECENT EVENTS</p><h2>Local activity</h2></div><span class="tag tag-green">ON THIS DEVICE</span></div><div id="activityList" class="activity-list"></div><div class="activity-empty" id="activityEmpty"><span>◷</span><p>এখনও কোনো activity নেই। নোট save করলে এখানে দেখা যাবে।</p></div></section>
+          <div class="info-banner"><span class="info-symbol">i</span><p>এই prototype-এ activity history server-এ পাঠানো হয় না; page reload হলে recent session log মুছে যায়।</p></div>
+          <footer class="page-footer"><span>Activity log</span><span>Local session only</span></footer>
+        </section>
+
+        <section class="page" id="page-settings" data-page-content="settings" hidden>
+          <div class="page-heading"><p class="eyebrow">YOUR WORKSPACE</p><h1>Settings</h1><p class="page-subtitle">ARBAT কীভাবে তৈরি হবে, তার control তোমার হাতেই থাকবে।</p></div>
+          <div class="settings-layout">
+            <div class="settings-main">
+              <section class="surface-card setting-card"><div class="setting-heading"><span class="setting-icon icon-lavender"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v3M12 17.5v3M3.5 12h3m11 0h3M6 6l2.1 2.1m7.8 7.8L18 18m0-12-2.1 2.1m-7.8 7.8L6 18"/><circle cx="12" cy="12" r="4.5"/></svg></span><div><p class="eyebrow">AI CORE</p><h2>Model connection</h2></div><span class="tag tag-neutral">NOT CONNECTED</span></div><p class="setting-description">কোনো model endpoint, API key বা external service এখানে configured নয়। ভবিষ্যতে local open-weight model দিয়ে শুরু করা যাবে।</p><div class="setup-note"><strong>Secure setup principle</strong><span>Secret keys browser code-এ রাখবে না। Model credentials server-side-এ রাখো।</span></div><button class="button button-secondary" id="modelInfoButton">Architecture checklist <span>→</span></button></section>
+              <section class="surface-card setting-card"><div class="setting-heading"><span class="setting-icon icon-blue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 19 6v5c0 4.5-2.7 7.6-7 10-4.3-2.4-7-5.5-7-10V6l7-3Z"/><path d="m9 12 2 2 4-4"/></svg></span><div><p class="eyebrow">DATA &amp; PRIVACY</p><h2>Local-first controls</h2></div></div><div class="privacy-row"><div><strong>Memory notes</strong><p>Stored in this browser's local storage.</p></div><span class="tag tag-green">LOCAL</span></div><div class="privacy-row"><div><strong>AI conversations</strong><p>No model connection; messages remain in this page session.</p></div><span class="tag tag-neutral">DEMO</span></div><div class="privacy-row"><div><strong>Device control</strong><p>No PC or Android access is enabled.</p></div><span class="tag tag-neutral">OFF</span></div></section>
+              <section class="surface-card setting-card" id="appearanceCard"><div class="setting-heading"><span class="setting-icon icon-peach"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 0 0 17V3.5Z"/></svg></span><div><p class="eyebrow">APPEARANCE</p><h2>Interface theme</h2></div></div><div class="theme-row"><div><strong>Dark mode</strong><p>Switch between light and dark workspace styles.</p></div><button class="switch" id="themeToggle" role="switch" aria-checked="false" aria-label="Toggle dark mode"><span></span></button></div></section>
+            </div>
+            <aside class="surface-card account-card"><span class="account-avatar">AR</span><p class="eyebrow">PERSONAL WORKSPACE</p><h2>Arafat</h2><p>ARBAT project owner</p><div class="account-divider"></div><div class="account-detail"><span>Interface version</span><strong>Redesign 1.0</strong></div><div class="account-detail"><span>Model status</span><strong class="status-not-connected">Not connected</strong></div><div class="account-divider"></div><p class="account-small">This is a frontend prototype. Settings here do not connect or control an AI model.</p></aside>
+          </div>
+          <footer class="page-footer"><span>Settings</span><span>Designed for user control</span></footer>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="search-overlay" id="searchOverlay" hidden>
+    <button class="search-scrim" id="searchScrim" aria-label="Close search"></button>
+    <section class="search-dialog" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+      <h2 class="sr-only" id="searchTitle">Search ARBAT pages</h2>
+      <div class="search-dialog-input"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg><input id="globalSearch" type="search" placeholder="Search pages and actions..." autocomplete="off"><kbd>ESC</kbd></div>
+      <p class="search-hint">PAGES</p><div class="search-results" id="searchResults"></div><div class="search-footer"><span>Navigate ARBAT</span><span>Enter to open</span></div>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
