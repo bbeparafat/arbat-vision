@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07111f">
+  <title>ARBAT AI — Vision Starter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="ARBAT AI home"><span class="brand-mark">A</span><span>ARBAT <small>VISION SYSTEM</small></span></a>
+      <span class="status-pill"><i id="statusDot"></i><span id="systemStatus">ক্যামেরা বন্ধ</span></span>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow">PERSONAL AI PROJECT · PHASE 01</p>
+      <h1>তোমার হাতের ইশারায়<br><span>ARBAT বুঝবে।</span></h1>
+      <p class="intro">এটি ARBAT-এর প্রথম Vision prototype। ক্যামেরা চালু করে হাত দেখাও—সিস্টেম হাতের অবস্থান ও কয়েকটি gesture শনাক্ত করার চেষ্টা করবে।</p>
+    </section>
+
+    <section class="workspace">
+      <div class="camera-card">
+        <div class="card-heading">
+          <div><span class="eyebrow">LIVE INPUT</span><h2>Camera feed</h2></div>
+          <span class="live-tag"><i></i> LIVE VIEW</span>
+        </div>
+        <div class="camera-stage" id="cameraStage">
+          <video id="inputVideo" playsinline muted></video>
+          <canvas id="outputCanvas"></canvas>
+          <div class="camera-placeholder" id="placeholder">
+            <div class="camera-icon">◎</div>
+            <strong>ক্যামেরা এখনো চালু হয়নি</strong>
+            <span>শুরু করতে নিচের বাটনে চাপ দাও</span>
+          </div>
+          <div class="scan-line"></div>
+        </div>
+        <div class="camera-actions">
+          <button class="primary-btn" id="startBtn">ক্যামেরা চালু করো <span>↗</span></button>
+          <button class="secondary-btn" id="stopBtn" disabled>বন্ধ করো</button>
+        </div>
+        <p class="privacy-note">🔒 ভিডিও এই ব্রাউজারেই প্রসেস হয়; এই প্রোটোটাইপ ভিডিও কোথাও সংরক্ষণ বা আপলোড করে না।</p>
+      </div>
+
+      <aside class="insight-column">
+        <div class="info-card">
+          <span class="eyebrow">DETECTION</span>
+          <h2>যা শনাক্ত হচ্ছে</h2>
+          <div class="metric"><span>হাত শনাক্ত</span><strong id="handCount">০</strong></div>
+          <div class="metric"><span>বর্তমান gesture</span><strong id="gestureName">অপেক্ষায়</strong></div>
+          <div class="metric"><span>আত্মবিশ্বাস</span><strong id="confidence">—</strong></div>
+        </div>
+        <div class="info-card gesture-card">
+          <span class="eyebrow">GESTURE LIBRARY</span>
+          <h2>পরীক্ষামূলক ইশারা</h2>
+          <ul class="gesture-list">
+            <li><b>✋</b><span><strong>Open Palm</strong><small>খোলা হাত</small></span></li>
+            <li><b>✊</b><span><strong>Fist</strong><small>মুষ্টিবদ্ধ হাত</small></span></li>
+            <li><b>✌️</b><span><strong>Peace</strong><small>দুই আঙুল</small></span></li>
+            <li><b>☝️</b><span><strong>One Finger</strong><small>এক আঙুল</small></span></li>
+          </ul>
+        </div>
+        <div class="info-card log-card">
+          <span class="eyebrow">SYSTEM LOG</span>
+          <p id="logText">ARBAT Vision প্রস্তুত। ক্যামেরা চালু করলে শনাক্তকরণ শুরু হবে।</p>
+        </div>
+      </aside>
+    </section>
+    <footer><span>ARBAT AI · BUILD 0.1</span><span>একটি পরীক্ষামূলক প্রোটোটাইপ</span></footer>
+  </main>
+
+  <!-- MediaPipe Hands runs in the browser. Internet is required to load its CDN files. -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</body>
+</html>
